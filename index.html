@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Crédit d’Afrik & Investissement</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f4fdf4;
+        color: #333;
+    }
+
+    header {
+        background-color: #1f8f4a;
+        color: white;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    nav {
+        background-color: #146b36;
+        padding: 10px;
+        text-align: center;
+    }
+
+    nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    h1, h2 {
+        color: #1f8f4a;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    .box {
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    /* 🔥 SECTION MODALITÉS EN VERT */
+    #modalites {
+        background-color: #c8f7c5 !important;
+        border-left: 5px solid #1f8f4a;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    th, td {
+        border: 1px solid #1f8f4a;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #1f8f4a;
+        color: white;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    button {
+        background-color: #1f8f4a;
+        color: white;
+        border: none;
+        padding: 12px;
+        margin-top: 15px;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    footer {
+        background-color: #146b36;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 30px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="images/logo.png" alt="Logo Crédit d’Afrik" style="width:120px; margin-right:15px;">
+    <div>
+        <h1>CRÉDIT D’AFRIK & INVESTISSEMENT</h1>
+        <p>Investir aujourd’hui, sécuriser demain</p>
+    </div>
+</header>
+
+<nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#services">Services</a>
+    <a href="#credit">Demande de crédit</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container" id="accueil">
+    <!-- Reste du contenu (inchangé) -->
+
+    <div class="box" id="modalites">
+        <h2>Modalités d’obtention du crédit</h2>
+        <ul>
+            <li>Définir l’objectif du prêt</li>
+            <li>Disposer d’une pièce d’identité valide</li>
+            <li>Justifier un moyen de remboursement du crédit</li>
+            <li>Être capable de payer les frais obligatoires d’ouverture du compte d’assurance crédit</li>
+        </ul>
+
+        <h3>Frais d’ouverture du compte d’assurance prêt</h3>
+        <ul>
+            <li>Crédit 50.000 FCFA à 80.000 FCFA : <strong>3.500 FCFA</strong></li>
+            <li>Crédit 100.000 FCFA à 400.000 FCFA : <strong>7.500 FCFA</strong></li>
+            <li>Crédit 500.000 FCFA à 1.000.000 FCFA : <strong>15.000 FCFA</strong></li>
+        </ul>
+    </div>
+
+    <div class="box" id="credit">
+    <h2>Demande de Crédit</h2>
+
+    <p style="color:red"><strong>Important :</strong> Pour tout crédit supérieur à <strong>2.000.000 FCFA</strong>, un <strong>numéro de compte bancaire</strong> est obligatoire.</p>
+
+    <form onsubmit="envoyerWhatsApp(); return false;">
+        <input type="text" id="nom" placeholder="Nom complet" required>
+
+        <input type="text" id="compteMobile" placeholder="Numéro de compte mobile (MTN, Orange, etc.)" required>
+
+        <input type="number" id="montant" placeholder="Montant souhaité" required>
+
+        <input type="text" id="compteBanque" placeholder="Numéro de compte bancaire (obligatoire si montant > 2.000.000 FCFA)">
+
+        <input type="text" id="urgence" placeholder="Contact d’urgence" required>
+
+        <select id="situation" required>
+            <option value="">Situation matrimoniale</option>
+            <option>Marié(e)</option>
+            <option>Célibataire</option>
+            <option>Célibataire avec enfants</option>
+        </select>
+
+        <!-- 🔥 CADRE POUR IMAGES -->
+        <div style="
+            border: 2px dashed #1f8f4a;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            background: #f0fff0;
+        ">
+            <h3 style="color:#1f8f4a;">Téléversement des documents</h3>
+
+            <p>Veuillez sélectionner les images suivantes :</p>
+
+            <label><strong>Photo de la CNI / Récepissé :</strong></label>
+            <input type="file" id="cni" accept="image/*" required>
+
+            <br><br>
+
+            <label><strong>Capture du versement des frais :</strong></label>
+            <input type="file" id="capture" accept="image/*" required>
+
+            <p style="color:red; margin-top:10px;">
+                ⚠️ Les images ne peuvent pas être envoyées automatiquement via WhatsApp.<br>
+                Après l’ouverture de WhatsApp, veuillez joindre les images manuellement.
+            </p>
+        </div>
+
+        <select id="duree">
+            <option>3 mois</option>
+            <option>6 mois</option>
+            <option>12 mois</option>
+        </select>
+
+        <button type="submit">Envoyer la demande via WhatsApp</button>
+    </form>
+</div>
+
+<script>
+function envoyerWhatsApp() {
+    var nom = document.getElementById("nom").value;
+    var compteMobile = document.getElementById("compteMobile").value;
+    var compteBanque = document.getElementById("compteBanque").value;
+    var urgence = document.getElementById("urgence").value;
+    var montant = document.getElementById("montant").value;
+    var duree = document.getElementById("duree").value;
+    var situation = document.getElementById("situation").value;
+
+    var message =
+        "Demande de crédit:%0A" +
+        "Nom : " + nom + "%0A" +
+        "Compte mobile : " + compteMobile + "%0A" +
+        "Montant demandé : " + montant + " FCFA%0A" +
+        "Durée : " + duree + "%0A" +
+        "Contact d'urgence : " + urgence + "%0A" +
+        "Situation matrimoniale : " + situation + "%0A";
+
+    if (montant > 2000000) {
+        message += "Compte bancaire (OBLIGATOIRE) : " + compteBanque + "%0A";
+    } else {
+        message += "Compte bancaire (facultatif) : " + compteBanque + "%0A";
+    }
+
+    message += "%0A📎 Veuillez joindre ensuite :" +
+               "%0A- Photo de votre CNI / Récepicé" +
+               "%0A- Capture du paiement des frais";
+
+    var numero = "237672717004";
+    window.open("https://wa.me/" + <script>
+function envoyerWhatsApp() {
+    var nom = document.getElementById("nom").value;
+    var compteMobile = document.getElementById("compteMobile").value;
+    var compteBanque = document.getElementById("compteBanque").value;
+    var urgence = document.getElementById("urgence").value;
+    var montant = document.getElementById("montant").value;
+    var duree = document.getElementById("duree").value;
+    var situation = document.getElementById("situation").value;
+
+    var message =
+        "Demande de crédit:%0A" +
+        "Nom : " + nom + "%0A" +
+        "Compte mobile : " + compteMobile + "%0A" +
+        "Montant demandé : " + montant + " FCFA%0A" +
+        "Durée : " + duree + "%0A" +
+        "Contact d'urgence : " + urgence + "%0A" +
+        "Situation matrimoniale : " + situation + "%0A";
+
+    if (montant > 2000000) {
+        message += "Compte bancaire (OBLIGATOIRE) : " + compteBanque + "%0A";
+    } else {
+        message += "Compte bancaire (facultatif) : " + compteBanque + "%0A";
+    }
+
+    message += "%0A📎 Veuillez joindre ensuite :" +
+               "%0A- Photo de votre CNI / Récepicé" +
+               "%0A- Capture du paiement des frais";
+
+    var numero = "237672717004";
+    window.open("https://wa.me/" + 672717004 + "?text=" + message, "_blank");
+}
+</script> + "?text=" + message, "_blank");
+}
+</script>
+
+
+    <div class="box" id="contact">
+        <h2>Contact</h2>
+        <p>WhatsApp : +237 672 71 70 04</p>
+        <p>Email : contact@creditdafrik.com</p>
+        <p>Adresse : Cameroun</p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Crédit d’Afrik & Investissement. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
