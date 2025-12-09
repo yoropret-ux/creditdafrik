@@ -198,41 +198,97 @@
     </div>
 
     <div class="box" id="credit">
-        <h2>Demande de Crédit</h2>
+    <h2>Demande de Crédit</h2>
 
-        <form onsubmit="envoyerWhatsApp(); return false;">
-            <input type="text" id="nom" placeholder="Nom complet" required>
-            <input type="tel" id="tel" placeholder="Numéro de téléphone" required>
-            <input type="number" id="montant" placeholder="Montant souhaité" required>
+    <p style="color:red"><strong>Important :</strong> Pour tout crédit supérieur à <strong>2.000.000 FCFA</strong>, un <strong>numéro de compte bancaire</strong> est obligatoire.</p>
 
-            <select id="duree">
-                <option>3 mois</option>
-                <option>6 mois</option>
-                <option>12 mois</option>
-            </select>
+    <form onsubmit="envoyerWhatsApp(); return false;">
+        <input type="text" id="nom" placeholder="Nom complet" required>
 
-            <button type="submit">Envoyer la demande via WhatsApp</button>
-        </form>
-    </div>
+        <input type="text" id="compteMobile" placeholder="Numéro de compte mobile (MTN, Orange, etc.)" required>
 
-    <script>
-    function envoyerWhatsApp() {
-        var nom = document.getElementById("nom").value;
-        var tel = document.getElementById("tel").value;
-        var montant = document.getElementById("montant").value;
-        var duree = document.getElementById("duree").value;
+        <input type="number" id="montant" placeholder="Montant souhaité" required>
 
-        var message = 
-            "Demande de crédit:%0A" +
-            "Nom : " + nom + "%0A" +
-            "Téléphone : " + tel + "%0A" +
-            "Montant : " + montant + " FCFA%0A" +
-            "Durée : " + duree;
+        <input type="text" id="compteBanque" placeholder="Numéro de compte bancaire (obligatoire si montant > 2.000.000 FCFA)">
 
-        var numero = "237672717004";
-        window.open("https://wa.me/" + numero + "?text=" + message, "_blank");
+        <input type="text" id="urgence" placeholder="Contact d’urgence" required>
+
+        <select id="situation" required>
+            <option value="">Situation matrimoniale</option>
+            <option>Marié(e)</option>
+            <option>Célibataire</option>
+            <option>Célibataire avec enfants</option>
+        </select>
+
+        <!-- 🔥 CADRE POUR IMAGES -->
+        <div style="
+            border: 2px dashed #1f8f4a;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            background: #f0fff0;
+        ">
+            <h3 style="color:#1f8f4a;">Téléversement des documents</h3>
+
+            <p>Veuillez sélectionner les images suivantes :</p>
+
+            <label><strong>Photo de la CNI / Récepissé :</strong></label>
+            <input type="file" id="cni" accept="image/*" required>
+
+            <br><br>
+
+            <label><strong>Capture du versement des frais :</strong></label>
+            <input type="file" id="capture" accept="image/*" required>
+
+            <p style="color:red; margin-top:10px;">
+                ⚠️ Les images ne peuvent pas être envoyées automatiquement via WhatsApp.<br>
+                Après l’ouverture de WhatsApp, veuillez joindre les images manuellement.
+            </p>
+        </div>
+
+        <select id="duree">
+            <option>3 mois</option>
+            <option>6 mois</option>
+            <option>12 mois</option>
+        </select>
+
+        <button type="submit">Envoyer la demande via WhatsApp</button>
+    </form>
+</div>
+
+   <script>
+function envoyerWhatsApp() {
+    var nom = document.getElementById("nom").value;
+    var compteMobile = document.getElementById("compteMobile").value;
+    var compteBanque = document.getElementById("compteBanque").value;
+    var urgence = document.getElementById("urgence").value;
+    var montant = document.getElementById("montant").value;
+    var duree = document.getElementById("duree").value;
+    var situation = document.getElementById("situation").value;
+
+    var message =
+        "Demande de crédit:%0A" +
+        "Nom : " + nom + "%0A" +
+        "Compte mobile : " + compteMobile + "%0A" +
+        "Montant demandé : " + montant + " FCFA%0A" +
+        "Durée : " + duree + "%0A" +
+        "Contact d'urgence : " + urgence + "%0A" +
+        "Situation matrimoniale : " + situation + "%0A";
+
+    if (montant > 2000000) {
+        message += "Compte bancaire (OBLIGATOIRE) : " + compteBanque + "%0A";
+    } else {
+        message += "Compte bancaire (facultatif) : " + compteBanque + "%0A";
     }
-    </script>
+
+    message += "%0A📎 Veuillez joindre ensuite :" +
+               "%0A- Photo de votre CNI / Récepicé" +
+               "%0A- Capture du paiement des frais";
+
+    var numero = "237672717004";
+    window.open("https://wa.me/" + numero + "?text=" + message, "_blank");
+}
+</script>
 
     <div class="box" id="contact">
         <h2>Contact</h2>
@@ -249,3 +305,4 @@
 
 </body>
 </html>
+
